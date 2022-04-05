@@ -1,17 +1,14 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/widgets/homescreen_stories_card.dart';
 
-import '../provider/hot_destination_provider.dart';
+import '../widgets/homescreen_stories_card.dart';
 import '../provider/destination.dart';
+import '../provider/destination_provider.dart';
 
 class HomeScreenStories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Destination> dests =
-        Provider.of<HotDestinationProvider>(context).items;
+    List<Destination> dests = Provider.of<DestinationProvider>(context).items;
     return Container(
       height: (MediaQuery.of(context).size.height -
               MediaQuery.of(context).padding.top) *

@@ -11,6 +11,7 @@ class Destination with ChangeNotifier {
   final List<String> reviews;
   final List<Location> subLocations;
   bool isFavourite = false;
+  final bool isPopular;
 
   Destination({
     required this.name,
@@ -20,5 +21,6 @@ class Destination with ChangeNotifier {
     required this.imgUrl,
     required this.reviews,
     required this.subLocations,
+    required this.isPopular,
   });
 }

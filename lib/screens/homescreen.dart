@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/destination_details_screen.dart';
 import '../elements/homescreen_search_bar.dart';
 import '../screens/constraints.dart';
 import '../widgets/Homescreentopview.dart';

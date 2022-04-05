@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './provider/hot_destination_provider.dart';
+import './screens/see_all_destination_screen.dart';
+import './screens/see_all_location_screen.dart';
+import '../screens/hotel_list_screen.dart';
+import './provider/hotel_provider.dart';
+import './screens/destination_details_screen.dart';
 import './screens/homescreen.dart';
+import './provider/destination.dart';
+import './provider/location.dart';
+import './provider/destination_provider.dart';
+import './screens/destination_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,19 +25,27 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (ctx) => HotDestinationProvider(),
+          create: (ctx) => HotelProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => DestinationProvider(),
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Travel App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Colors.white,
           //primaryColor: Color(0xFF3E4067),
         ),
-        home: Homescreen(),
+        home: Homescreen(), //HotelList(d), //DestinationDetailsScreen(),
 
-        //routes: ,
+        routes: {
+          SeeAllDestination.routeName: (ctx) => SeeAllDestination(),
+          SeeAllLocation.routeName: (ctx) => SeeAllLocation(),
+          DestinationDetailsScreen.routeName: (ctx) =>
+              DestinationDetailsScreen(),
+        },
       ),
     );
   }

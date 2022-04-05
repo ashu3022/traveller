@@ -7,6 +7,8 @@ class Location with ChangeNotifier {
   final String description;
   final String imgUrl;
   final List<String> reviews;
+  final double rating;
+  final bool isPopular;
   bool isFavourite = false;
 
   Location({
@@ -16,5 +18,7 @@ class Location with ChangeNotifier {
     required this.description,
     required this.imgUrl,
     required this.reviews,
+    required this.isPopular,
+    required this.rating,
   });
 }

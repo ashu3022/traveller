@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/provider/hot_destination_provider.dart';
+import 'package:travel_app/screens/see_all_destination_screen.dart';
 
+import '../provider/destination_provider.dart';
 import '../widgets/homescreen_hotdestination_card.dart';
 import '../provider/destination.dart';
 
@@ -9,7 +10,7 @@ class HotDestinations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Destination> dests =
-        Provider.of<HotDestinationProvider>(context).items;
+        Provider.of<DestinationProvider>(context).fetchHotDestinations();
     return Container(
       height: (MediaQuery.of(context).size.height -
               MediaQuery.of(context).padding.top) *
@@ -32,12 +33,18 @@ class HotDestinations extends StatelessWidget {
                     fontSize: 24,
                   ),
                 ),
-                Text(
-                  'See All>',
-                  style: TextStyle(
-                    color: Color(0xFF3F4168),
-                    fontSize: 15,
+                TextButton(
+                  child: Text(
+                    'See All>',
+                    style: TextStyle(
+                      color: Color(0xFF3F4168),
+                      fontSize: 15,
+                    ),
                   ),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(SeeAllDestination.routeName);
+                  },
                 ),
               ],
             ),
