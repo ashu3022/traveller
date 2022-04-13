@@ -22,6 +22,7 @@ class DestinationProvider with ChangeNotifier {
       ],
       subLocations: [
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -37,6 +38,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Lower Lake",
@@ -52,6 +54,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Van Vihar",
@@ -68,6 +71,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ), //dummy for sublocation starts from
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -83,6 +87,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -115,6 +120,7 @@ class DestinationProvider with ChangeNotifier {
       ],
       subLocations: [
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -130,6 +136,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Lower Lake",
@@ -145,6 +152,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Van Vihar",
@@ -161,6 +169,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ), //dummy for sublocation starts from
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -176,6 +185,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -208,6 +218,7 @@ class DestinationProvider with ChangeNotifier {
       ],
       subLocations: [
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -223,6 +234,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Lower Lake",
@@ -238,6 +250,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Van Vihar",
@@ -254,6 +267,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ), //dummy for sublocation starts from
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -269,6 +283,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -301,6 +316,7 @@ class DestinationProvider with ChangeNotifier {
       ],
       subLocations: [
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -316,6 +332,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Lower Lake",
@@ -331,6 +348,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Van Vihar",
@@ -347,6 +365,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ), //dummy for sublocation starts from
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",
@@ -362,6 +381,7 @@ class DestinationProvider with ChangeNotifier {
           ],
         ),
         Location(
+          price: 150,
           isPopular: true,
           rating: 4,
           name: "Upper Lake",

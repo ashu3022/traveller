@@ -11,6 +11,8 @@ import './provider/destination.dart';
 import './provider/location.dart';
 import './provider/destination_provider.dart';
 import './screens/destination_details_screen.dart';
+import './screens/location_details_screen.dart';
+import './screens/slider_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,13 +40,16 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           //primaryColor: Color(0xFF3E4067),
         ),
-        home: Homescreen(), //HotelList(d), //DestinationDetailsScreen(),
+        home:
+            Sliderpage(), //Homescreen(), //HotelList(d), //DestinationDetailsScreen(),
 
         routes: {
           SeeAllDestination.routeName: (ctx) => SeeAllDestination(),
           SeeAllLocation.routeName: (ctx) => SeeAllLocation(),
           DestinationDetailsScreen.routeName: (ctx) =>
               DestinationDetailsScreen(),
+          LocationDetailsScreen.routeName: (ctx) => LocationDetailsScreen(),
+          Homescreen.routeName: (ctx) => Homescreen(),
         },
       ),
     );

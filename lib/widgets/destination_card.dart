@@ -25,7 +25,7 @@ class DestinationCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           //color: Colors.white,
         ),
-        height: MediaQuery.of(context).size.height * 0.3,
+        height: MediaQuery.of(context).size.height * 0.27,
         width: MediaQuery.of(context).size.width * 0.98,
         child: Column(
           children: [

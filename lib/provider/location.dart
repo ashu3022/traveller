@@ -9,6 +9,7 @@ class Location with ChangeNotifier {
   final List<String> reviews;
   final double rating;
   final bool isPopular;
+  final double price;
   bool isFavourite = false;
 
   Location({
@@ -20,5 +21,6 @@ class Location with ChangeNotifier {
     required this.reviews,
     required this.isPopular,
     required this.rating,
+    required this.price,
   });
 }

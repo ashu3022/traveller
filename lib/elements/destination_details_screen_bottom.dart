@@ -112,7 +112,7 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.98,
               child: ListView.separated(
                 itemBuilder: ((context, index) {
-                  return PopularInTownCard(dest.subLocations[index]);
+                  return PopularInTownCard(dest.subLocations[index], dest);
                 }),
                 separatorBuilder: (ctx, index) => const SizedBox(
                   width: 5,

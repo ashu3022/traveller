@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../provider/location.dart';
 import '../elements/location_card_image.dart';
 import '../provider/destination.dart';
+import '../screens/location_details_screen.dart';
 
 class LocationCard extends StatelessWidget {
   final Destination d;
@@ -12,62 +13,68 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        //color: Colors.white,
-      ),
-      height: MediaQuery.of(context).size.height * 0.3,
-      width: MediaQuery.of(context).size.width * 0.98,
-      child: Column(
-        children: [
-          LocationCardImage(l),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 23,
-            width: MediaQuery.of(context).size.width * 0.9,
-            alignment: Alignment.centerLeft,
-            child: Column(
-              children: [
-                FittedBox(
-                  child: Text(
-                    l.name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      //height: 0.5,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(LocationDetailsScreen.routeName,
+            arguments: {'location': l, 'destination': d});
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          //color: Colors.white,
+        ),
+        height: MediaQuery.of(context).size.height * 0.3,
+        width: MediaQuery.of(context).size.width * 0.98,
+        child: Column(
+          children: [
+            LocationCardImage(l),
+            SizedBox(
+              height: 10,
             ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 15,
-            width: MediaQuery.of(context).size.width * 0.9,
-            alignment: Alignment.centerLeft,
-            child: Column(
-              children: [
-                FittedBox(
-                  child: Text(
-                    d.name,
-                    style: TextStyle(
+            Container(
+              height: 23,
+              width: MediaQuery.of(context).size.width * 0.9,
+              alignment: Alignment.centerLeft,
+              child: Column(
+                children: [
+                  FittedBox(
+                    child: Text(
+                      l.name,
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: Color.fromARGB(255, 147, 146, 146)),
-                    textAlign: TextAlign.left,
+                        fontSize: 20,
+                        //height: 0.5,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 15,
+              width: MediaQuery.of(context).size.width * 0.9,
+              alignment: Alignment.centerLeft,
+              child: Column(
+                children: [
+                  FittedBox(
+                    child: Text(
+                      d.name,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color: Color.fromARGB(255, 147, 146, 146)),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
