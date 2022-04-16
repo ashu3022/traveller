@@ -44,7 +44,7 @@ class HomeScreenStories extends StatelessWidget {
             //width: MediaQuery.of(context).size.width,
             child: ListView.separated(
               itemBuilder: ((context, index) {
-                return StoriesCard(dests[index].imgUrl);
+                return StoriesCard();
               }),
               separatorBuilder: (ctx, index) => const SizedBox(
                 width: 15,

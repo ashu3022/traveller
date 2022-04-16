@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../provider/location.dart';
 import '../screens/location_details_screen.dart';
 import '../provider/destination.dart';
 
 class PopularInTownCard extends StatelessWidget {
-  final Location l;
-  final Destination d;
-  PopularInTownCard(this.l, this.d);
+  final String dName;
+  PopularInTownCard(this.dName);
 
   @override
   Widget build(BuildContext context) {
+    final Location l = Provider.of<Location>(context);
     final cardHeight = (MediaQuery.of(context).size.height -
             MediaQuery.of(context).padding.top) *
         0.28;
@@ -18,7 +19,7 @@ class PopularInTownCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(LocationDetailsScreen.routeName,
-            arguments: {'location': l, 'destination': d});
+            arguments: {'location': l, 'destination': dName});
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),

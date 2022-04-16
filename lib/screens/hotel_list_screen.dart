@@ -7,17 +7,18 @@ import 'package:travel_app/widgets/hotel_card.dart';
 import '../provider/destination.dart';
 
 class HotelList extends StatelessWidget {
-  final Destination d;
+  static const String routeName = '/hotel-list';
 
-  HotelList(this.d);
+  HotelList();
 
   @override
   Widget build(BuildContext context) {
-    List<Hotel> hotels =
-        Provider.of<HotelProvider>(context).fetchHotels(d.name);
+    final Destination d =
+        ModalRoute.of(context)!.settings.arguments as Destination;
     return Scaffold(
       //extendBodyBehindAppBar: true,
       appBar: AppBar(
+        foregroundColor: Colors.black,
         backgroundColor: Colors.white,
         elevation: 0,
         title: Row(
@@ -45,47 +46,76 @@ class HotelList extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: (MediaQuery.of(context).size.height -
-                    MediaQuery.of(context).padding.top -
-                    AppBar().preferredSize.height) *
-                0.05,
-            child: Text(
-              'Hotels',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          SizedBox(
-            height: (MediaQuery.of(context).size.height -
-                    MediaQuery.of(context).padding.top -
-                    AppBar().preferredSize.height) *
-                0.01,
-          ),
-          Container(
-            height: (MediaQuery.of(context).size.height -
-                    MediaQuery.of(context).padding.top -
-                    AppBar().preferredSize.height) *
-                0.94,
-            width: MediaQuery.of(context).size.width * 0.98,
-            child: ListView.separated(
-              itemBuilder: ((context, index) {
-                return HotelCard(hotels[index]);
-              }),
-              separatorBuilder: (ctx, index) => const SizedBox(
-                width: 5,
-              ),
-              itemCount: hotels.length,
-              //scrollDirection: Axis.horizontal,
-            ),
-          ),
-        ],
+      body: FutureBuilder(
+        future: Provider.of<HotelProvider>(context, listen: false)
+            .fetchRapidHotelsGet1(d),
+        builder: (ctx, dataSnapshot) {
+          if (dataSnapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            if (dataSnapshot.error == null) {
+              print(dataSnapshot.error == null);
+              List<Hotel> hotels =
+                  Provider.of<HotelProvider>(context, listen: false)
+                      .fetchHotels(d.name);
+              return Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: (MediaQuery.of(context).size.height -
+                            MediaQuery.of(context).padding.top -
+                            AppBar().preferredSize.height) *
+                        0.05,
+                    child: Text(
+                      'Hotels',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SizedBox(
+                    height: (MediaQuery.of(context).size.height -
+                            MediaQuery.of(context).padding.top -
+                            AppBar().preferredSize.height) *
+                        0.01,
+                  ),
+                  Container(
+                    height: (MediaQuery.of(context).size.height -
+                            MediaQuery.of(context).padding.top -
+                            AppBar().preferredSize.height) *
+                        0.94,
+                    width: MediaQuery.of(context).size.width * 0.98,
+                    child: Scrollbar(
+                      isAlwaysShown: true,
+                      child: ListView.separated(
+                        itemBuilder: ((context, index) {
+                          return HotelCard(hotels[index]);
+                        }),
+                        separatorBuilder: (ctx, index) => const SizedBox(
+                          width: 5,
+                        ),
+                        itemCount: hotels.length,
+                        //scrollDirection: Axis.horizontal,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            } else {
+              print(dataSnapshot.error == null);
+              return Center(
+                child: Text(
+                  'An Error Occured',
+                  style: TextStyle(color: Colors.red),
+                ),
+              );
+            }
+          }
+        },
       ),
     );
   }

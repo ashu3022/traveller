@@ -33,18 +33,21 @@ class SeeAllDestination extends StatelessWidget {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             height: (MediaQuery.of(context).size.height -
                     MediaQuery.of(context).padding.top -
                     AppBar().preferredSize.height) *
                 0.01,
+            width: MediaQuery.of(context).size.width,
           ),
           Container(
             height: (MediaQuery.of(context).size.height -
                     MediaQuery.of(context).padding.top -
                     AppBar().preferredSize.height) *
                 0.94,
+            alignment: Alignment.center,
             width: MediaQuery.of(context).size.width * 0.98,
             child: ListView.separated(
               itemBuilder: ((context, index) {

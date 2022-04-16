@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/screens/flights.dart';
 
 import '../provider/destination.dart';
 import '../widgets/destination_details_screen_location_card.dart';
 import '../screens/see_all_location_screen.dart';
+import '../provider/location.dart';
+import '../provider/location_provider.dart';
+import '../widgets/destination_detail_button_card.dart';
+import 'package:readmore/readmore.dart';
+import '../screens/hotel_list_screen.dart';
 
 class DestinationDetailsScreenBottom extends StatelessWidget {
   final Destination dest;
   DestinationDetailsScreenBottom(this.dest);
   @override
   Widget build(BuildContext context) {
+    final List<Location> l =
+        Provider.of<LocationProvider>(context).fetchHotLocations(dest);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -17,7 +25,7 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
       ),
       height:
           (MediaQuery.of(context).size.height + AppBar().preferredSize.height) *
-              0.72,
+              0.65,
       width: MediaQuery.of(context).size.width,
       child: SingleChildScrollView(
         child: Column(
@@ -108,19 +116,66 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
             Container(
               height: (MediaQuery.of(context).size.height -
                       MediaQuery.of(context).padding.top) *
-                  0.32,
+                  0.3,
               width: MediaQuery.of(context).size.width * 0.98,
               child: ListView.separated(
                 itemBuilder: ((context, index) {
-                  return PopularInTownCard(dest.subLocations[index], dest);
+                  return ChangeNotifierProvider.value(
+                    value: l[index],
+                    child: PopularInTownCard(l[index].dName),
+                  );
                 }),
                 separatorBuilder: (ctx, index) => const SizedBox(
                   width: 5,
                 ),
-                itemCount: dest.subLocations.length,
+                itemCount: l.length,
                 scrollDirection: Axis.horizontal,
               ),
             ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.98,
+              height: 50,
+              alignment: Alignment.topCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ButtonCard(
+                    imgUrl: 'assets/icons/hotel-svgrepo-com.svg',
+                    routeName: HotelList.routeName,
+                    d: dest,
+                    name: 'Hotels',
+                  ),
+                  ButtonCard(
+                    imgUrl: 'assets/icons/flight-plane-svgrepo-com.svg',
+                    routeName: Flight.routeName,
+                    d: dest,
+                    name: 'Flights',
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.98,
+              height: 50,
+              alignment: Alignment.topCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ButtonCard(
+                    imgUrl: 'assets/icons/train-svgrepo-com.svg',
+                    routeName: HotelList.routeName,
+                    d: dest,
+                    name: 'Trains',
+                  ),
+                  ButtonCard(
+                    imgUrl: 'assets/icons/restaurant-svgrepo-com.svg',
+                    routeName: HotelList.routeName,
+                    d: dest,
+                    name: 'Dinning',
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

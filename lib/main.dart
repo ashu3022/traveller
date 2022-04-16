@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
+import 'package:travel_app/screens/flights.dart';
 
+import './screens/destination_does_not_exist_screen.dart';
+import './screens/hotel_description_screen.dart';
+import './screens/TabsScreen.dart';
 import './screens/see_all_destination_screen.dart';
 import './screens/see_all_location_screen.dart';
 import '../screens/hotel_list_screen.dart';
@@ -13,8 +20,12 @@ import './provider/destination_provider.dart';
 import './screens/destination_details_screen.dart';
 import './screens/location_details_screen.dart';
 import './screens/slider_page.dart';
+import './provider/location_provider.dart';
+import './screens/login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -32,8 +43,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => DestinationProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => LocationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => HotelProvider(),
+        ),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Travel App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -41,7 +58,7 @@ class MyApp extends StatelessWidget {
           //primaryColor: Color(0xFF3E4067),
         ),
         home:
-            Sliderpage(), //Homescreen(), //HotelList(d), //DestinationDetailsScreen(),
+            Sliderpage(), //TabsScreen(), //Homescreen(), //HotelList(d), //DestinationDetailsScreen(),
 
         routes: {
           SeeAllDestination.routeName: (ctx) => SeeAllDestination(),
@@ -50,6 +67,13 @@ class MyApp extends StatelessWidget {
               DestinationDetailsScreen(),
           LocationDetailsScreen.routeName: (ctx) => LocationDetailsScreen(),
           Homescreen.routeName: (ctx) => Homescreen(),
+          TabsScreen.routeName: (ctx) => TabsScreen(),
+          SignInScreen.routeName: (ctx) => SignInScreen(),
+          HotelList.routeName: (ctx) => HotelList(),
+          DestinationNotFoundErrorScreen.routeName: (ctx) =>
+              DestinationNotFoundErrorScreen(),
+          HotelDetailsScreen.routeName: (ctx) => HotelDetailsScreen(),
+          Flight.routeName: (context) => Flight(),
         },
       ),
     );

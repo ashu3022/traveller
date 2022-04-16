@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import '../provider/destination.dart';
 import '../models/hotel.dart';
 
-class DestinationCardImage extends StatelessWidget {
+class DestinationCardImage extends StatefulWidget {
   final Destination d;
   DestinationCardImage(this.d);
 
+  @override
+  State<DestinationCardImage> createState() => _DestinationCardImageState();
+}
+
+class _DestinationCardImageState extends State<DestinationCardImage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -19,7 +24,7 @@ class DestinationCardImage extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.height * 0.2,
           child: Image.network(
-            d.imgUrl,
+            widget.d.imgUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -28,10 +33,16 @@ class DestinationCardImage extends StatelessWidget {
           right: 0,
           child: IconButton(
             icon: Icon(
-              Icons.bookmark_border_outlined,
+              widget.d.isFavourite
+                  ? Icons.bookmark
+                  : Icons.bookmark_border_outlined,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                widget.d.toggleFavouriteButton();
+              });
+            },
           ),
         ),
       ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "385644181389",
+    "project_id": "travel-planner-eb9c3",
+    "storage_bucket": "travel-planner-eb9c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385644181389:android:ed5740c69059695a872fc4",
+        "android_client_info": {
+          "package_name": "com.example.travel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385644181389-9vvh1474cmrbhubn7q3fgnoik6q38hdm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEzxHnfXltwoeFcG7xgm14Lg20b_VmLTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385644181389-9vvh1474cmrbhubn7q3fgnoik6q38hdm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

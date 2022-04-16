@@ -9,7 +9,6 @@ class Destination with ChangeNotifier {
   final String description;
   final String imgUrl;
   final List<String> reviews;
-  final List<Location> subLocations;
   bool isFavourite = false;
   final bool isPopular;
 
@@ -20,7 +19,11 @@ class Destination with ChangeNotifier {
     required this.description,
     required this.imgUrl,
     required this.reviews,
-    required this.subLocations,
     required this.isPopular,
   });
+
+  void toggleFavouriteButton() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
 }

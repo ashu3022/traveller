@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:travel_app/screens/TabsScreen.dart';
+import 'package:travel_app/screens/login.dart';
+import 'package:travel_app/screens/register.dart';
 import './homescreen.dart';
 
 class Sliderpage extends StatefulWidget {
@@ -14,9 +17,9 @@ class _SliderpageState extends State<Sliderpage> {
   // get the destination of bhopal passed over here
   String? SelectedDest = "Quick";
   List images = [
-    "blue-ridge-mountains-landscape.jpg",
-    "blue-ridge-mountains-landscape.jpg",
-    "blue-ridge-mountains-landscape.jpg"
+    "slider22.png",
+    "travel-concept-with-baggage.jpg",
+    "slider33.png"
   ];
   List head = ["Plan ", "Travel", "Stay"];
   List head1 = [
@@ -67,19 +70,20 @@ class _SliderpageState extends State<Sliderpage> {
                           Text(
                             head[index],
                             style: TextStyle(
-                                color: Color.fromARGB(255, 83, 37, 105),
+                                color: Colors.blue,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 30),
                           ),
                           Text(
                             head1[index],
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 83, 37, 105)),
+                            style:
+                                TextStyle(color: Colors.black.withOpacity(0.8)),
                           ),
                           SizedBox(height: 14),
                           Text(head2[index],
                               style: TextStyle(
-                                  fontSize: 16, color: Colors.black45)),
+                                  fontSize: 16,
+                                  color: Colors.black.withOpacity(0.8))),
                           SizedBox(
                             height: 30,
                           ),
@@ -95,51 +99,35 @@ class _SliderpageState extends State<Sliderpage> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           color: indexDots == index
-                              ? Color.fromARGB(255, 127, 82, 149)
-                              : Color.fromARGB(255, 214, 178, 235),
+                              ? Colors.blue
+                              : Color.fromARGB(255, 178, 211, 235),
                         ),
                       );
                     }))
                   ],
                 ),
                 SizedBox(
-                  height: 240,
+                  height: MediaQuery.of(context).size.height * 0.55,
                 ),
                 index == 2
                     ? Container(
                         alignment: Alignment.center,
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color.fromARGB(
-                                      255, 75, 35, 103), // background
-                                  onPrimary: Colors.white, // foreground
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .popAndPushNamed(Homescreen.routeName);
-                                },
-                                child: Text(
-                                  "LOGIN IN",
-                                )),
-                            SizedBox(
-                              height: 10,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.blue, // background
+                              onPrimary: Colors.white, // foreground
                             ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromARGB(
-                                    255, 75, 35, 103), // background
-                                onPrimary: Colors.white, // foreground
-                              ),
-                              onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .popAndPushNamed(SignInScreen.routeName);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 2),
                               child: Text(
-                                "SIGN UP",
-                                style: TextStyle(color: Colors.white),
+                                "Lets go!",
                               ),
-                            ),
-                          ],
-                        ),
+                            )),
                       )
                     : Text(""),
               ],

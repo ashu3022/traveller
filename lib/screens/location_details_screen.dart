@@ -9,16 +9,21 @@ import '../provider/location.dart';
 import '../elements/location_details_screen_top_image.dart';
 import '../elements/location_details_sreen_bottom.dart';
 
-class LocationDetailsScreen extends StatelessWidget {
+class LocationDetailsScreen extends StatefulWidget {
   static const routeName = '/location-details-screen';
-  //final Destination dest;
 
+  @override
+  State<LocationDetailsScreen> createState() => _LocationDetailsScreenState();
+}
+
+class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
+  //final Destination dest;
   @override
   Widget build(BuildContext context) {
     final Map<String, Object> m =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final Location l = m['location'] as Location;
-    final Destination d = m['destination'] as Destination;
+    final String d = m['destination'] as String;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -46,13 +51,19 @@ class LocationDetailsScreen extends StatelessWidget {
                     width: 25,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        l.toggleFavouriteButton();
+                      });
+                    },
                     child: Container(
                       height: 45,
                       alignment: Alignment.center,
                       //width: 20,
                       child: Icon(
-                        Icons.bookmark_add_outlined,
+                        l.isFavourite
+                            ? Icons.bookmark
+                            : Icons.bookmark_add_outlined,
                         color: Colors.white,
                         //size: 30,
                       ),
@@ -168,7 +179,7 @@ class LocationDetailsScreen extends StatelessWidget {
                                 child: FittedBox(
                                   fit: BoxFit.contain,
                                   child: Text(
-                                    d.name,
+                                    d,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,

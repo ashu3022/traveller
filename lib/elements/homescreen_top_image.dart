@@ -12,7 +12,7 @@ class StackImage extends StatelessWidget {
               0.4,
           width: double.infinity,
           child: Image.asset(
-            'assets/images/vecteezy_Background_nl1220.jpg',
+            'assets/images/home_bg.png',
             fit: BoxFit.cover,
           ),
         ),

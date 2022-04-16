@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/provider/location.dart';
+import 'package:travel_app/provider/location_provider.dart';
 
 import '../provider/destination.dart';
 import '../provider/destination_provider.dart';
@@ -13,6 +15,8 @@ class SeeAllLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     final Destination d =
         ModalRoute.of(context)!.settings.arguments as Destination;
+    final List<Location> l =
+        Provider.of<LocationProvider>(context).fetchLocations(d);
     return Scaffold(
       //extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -36,27 +40,31 @@ class SeeAllLocation extends StatelessWidget {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             height: (MediaQuery.of(context).size.height -
                     MediaQuery.of(context).padding.top -
                     AppBar().preferredSize.height) *
                 0.01,
+            width: MediaQuery.of(context).size.width,
           ),
           Container(
             height: (MediaQuery.of(context).size.height -
                     MediaQuery.of(context).padding.top -
                     AppBar().preferredSize.height) *
                 0.94,
+            alignment: Alignment.center,
             width: MediaQuery.of(context).size.width * 0.98,
             child: ListView.separated(
               itemBuilder: ((context, index) {
-                return LocationCard(d.subLocations[index], d);
+                return LocationCard(l[index], d);
+                //oi vismay pubspec upgrade kr de ek baar
               }),
               separatorBuilder: (ctx, index) => const SizedBox(
                 width: 5,
               ),
-              itemCount: d.subLocations.length,
+              itemCount: l.length,
               //scrollDirection: Axis.horizontal,
             ),
           ),

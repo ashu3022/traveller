@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # readmore: ^1.0.2
+  readmore: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,6 +45,23 @@ dependencies:
   #state management
   provider: ^6.0.2
   #readme: ^1.0.0
+  #image picker to upload or click image
+  image_picker: ^0.8.4+11
+  #inorder to implement bottom sheet in profile page
+  get:
+  #timeline package
+  timelines: ^0.1.0
+  #firebase
+  cloud_firestore: ^3.1.11
+  firebase_core: ^1.14.0
+  firebase_auth: ^3.3.13
+  #weather app
+  geolocator: ^8.2.0
+  flutter_spinkit: ^5.1.0
+  lottie: ^1.2.1
+  http: ^0.13.4
+  #ticket
+  ticket_material: ^0.3.1
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +89,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/json/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

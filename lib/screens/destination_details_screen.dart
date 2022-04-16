@@ -5,6 +5,7 @@ import '../elements/destination_details_screen_bottom.dart';
 import '../provider/destination.dart';
 import '../elements/destination_details_screen_top_image.dart';
 import '../provider/location.dart';
+import '../widgets/destination_detail_button_card.dart';
 
 class DestinationDetailsScreen extends StatelessWidget {
   static const routeName = '/destination-details-screen';

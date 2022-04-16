@@ -35,7 +35,7 @@ class HotelCardImage extends StatelessWidget {
             ),
             child: FittedBox(
               child: Text(
-                '₹${h.price}/day',
+                '₹${h.price.toStringAsFixed(0)}/day',
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -68,17 +68,6 @@ class HotelCardImage extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        ),
-        Positioned(
-          top: 0,
-          right: 0,
-          child: IconButton(
-            icon: Icon(
-              Icons.bookmark_border_outlined,
-              color: Colors.white,
-            ),
-            onPressed: () {},
           ),
         ),
       ],

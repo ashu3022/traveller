@@ -55,7 +55,7 @@ class DestinationCard extends StatelessWidget {
                         d.name,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 25,
                           //height: 0.5,
                         ),
                         textAlign: TextAlign.left,

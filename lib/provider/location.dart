@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Location with ChangeNotifier {
   final String name;
+  final String dName;
   final String id;
   final String summary;
   final String description;
@@ -14,6 +15,7 @@ class Location with ChangeNotifier {
 
   Location({
     required this.name,
+    required this.dName,
     required this.id,
     required this.summary,
     required this.description,
@@ -23,4 +25,8 @@ class Location with ChangeNotifier {
     required this.rating,
     required this.price,
   });
+  void toggleFavouriteButton() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
 }

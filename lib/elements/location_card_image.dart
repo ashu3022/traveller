@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../provider/location.dart';
 
-class LocationCardImage extends StatelessWidget {
+class LocationCardImage extends StatefulWidget {
   final Location l;
   LocationCardImage(this.l);
 
+  @override
+  State<LocationCardImage> createState() => _LocationCardImageState();
+}
+
+class _LocationCardImageState extends State<LocationCardImage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -18,7 +23,7 @@ class LocationCardImage extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.height * 0.2,
           child: Image.network(
-            l.imgUrl,
+            widget.l.imgUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -42,7 +47,7 @@ class LocationCardImage extends StatelessWidget {
                 ),
                 FittedBox(
                   child: Text(
-                    '${l.rating}',
+                    '${widget.l.rating}',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
@@ -56,10 +61,16 @@ class LocationCardImage extends StatelessWidget {
           right: 0,
           child: IconButton(
             icon: Icon(
-              Icons.bookmark_border_outlined,
+              widget.l.isFavourite
+                  ? Icons.bookmark
+                  : Icons.bookmark_border_outlined,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                widget.l.toggleFavouriteButton();
+              });
+            },
           ),
         ),
       ],
