@@ -24,6 +24,10 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
   //final Destination dest;
   @override
   Widget build(BuildContext context) {
+    final snackbar = SnackBar(
+      content: Text('Location Added to Trip'),
+      duration: Duration(seconds: 1),
+    );
     final Map<String, Object> m =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final Location l = m['location'] as Location;
@@ -78,12 +82,11 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      var token =
-                          Provider.of<AuthProvider>(context, listen: false)
-                              .setToken;
                       bool isit =
                           Provider.of<TripProvider>(context, listen: false)
                               .addLocation(l, d);
+                      if (isit)
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
                       if (!isit) {
                         showDialog(
                             barrierDismissible: false,
@@ -108,6 +111,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                                                 listen: false)
                                             .addLocation(l, d);
                                         Navigator.of(context).pop();
+                                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
                                       },
                                       child: Text('YES')),
                                 ],

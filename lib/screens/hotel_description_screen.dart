@@ -19,6 +19,10 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
   //final Destination dest;
   @override
   Widget build(BuildContext context) {
+    final snackbar = SnackBar(
+      content: Text('Hotel Added to Trip'),
+      duration: Duration(seconds: 1),
+    );
     final Hotel h = ModalRoute.of(context)!.settings.arguments as Hotel;
     final Destination d = Provider.of<DestinationProvider>(context)
         .fetchDestinationByName(h.destination);
@@ -47,6 +51,8 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                 onPressed: () {
                   int isit = Provider.of<TripProvider>(context, listen: false)
                       .addHotel(h, d);
+                  if (isit == 1)
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
                   if (isit == 2) {
                     showDialog(
                         barrierDismissible: false,
@@ -67,6 +73,8 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                                             listen: false)
                                         .addHotel(h, d, override: true);
                                     Navigator.of(context).pop();
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackbar);
                                   },
                                   child: Text('YES')),
                             ],
@@ -96,6 +104,8 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                                               listen: false)
                                           .addHotel(h, d);
                                       Navigator.of(context).pop();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackbar);
                                     },
                                     child: Text('YES')),
                               ],
