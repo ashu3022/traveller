@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/models/Amenities.dart';
+import 'package:travel_app/provider/add_to_trip_provider.dart';
+import 'package:travel_app/provider/destination.dart';
+import 'package:travel_app/provider/destination_provider.dart';
 
 import '../models/hotel.dart';
 import '../elements/hotel_details_below.dart';
@@ -17,6 +20,8 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final Hotel h = ModalRoute.of(context)!.settings.arguments as Hotel;
+    final Destination d = Provider.of<DestinationProvider>(context)
+        .fetchDestinationByName(h.destination);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -39,7 +44,66 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
               height: MediaQuery.of(context).size.height * 0.072,
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  int isit = Provider.of<TripProvider>(context, listen: false)
+                      .addHotel(h, d);
+                  if (isit == 2) {
+                    showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Add this Hotel?'),
+                            content: Text('Another Hotel Already Present'),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('NO')),
+                              FlatButton(
+                                  onPressed: () {
+                                    Provider.of<TripProvider>(context,
+                                            listen: false)
+                                        .addHotel(h, d, override: true);
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('YES')),
+                            ],
+                          );
+                        });
+                  } else {
+                    if (isit == 3) {
+                      showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('Reset Trip'),
+                              content: Text('A Trip Already Exists'),
+                              actions: [
+                                FlatButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('NO')),
+                                FlatButton(
+                                    onPressed: () {
+                                      Provider.of<TripProvider>(context,
+                                              listen: false)
+                                          .resetTrip();
+                                      Provider.of<TripProvider>(context,
+                                              listen: false)
+                                          .addHotel(h, d);
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('YES')),
+                              ],
+                            );
+                          });
+                    }
+                  }
+                },
                 child: Container(
                     alignment: Alignment.center,
                     height: 45,
@@ -215,7 +279,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                           child: FittedBox(
                             fit: BoxFit.contain,
                             child: Text(
-                              '₹${h.price}',
+                              '₹${h.price.toStringAsFixed(0)}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,

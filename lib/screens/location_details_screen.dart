@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/models/add_to_trip.dart';
+import 'package:travel_app/models/user.dart';
+import 'package:travel_app/provider/add_to_trip_provider.dart';
+import 'package:travel_app/provider/auth_provider.dart';
 
 import '../elements/location_details_below.dart';
 import '../elements/destination_details_screen_bottom.dart';
@@ -23,7 +27,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
     final Map<String, Object> m =
         ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
     final Location l = m['location'] as Location;
-    final String d = m['destination'] as String;
+    final Destination d = m['destination'] as Destination;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -73,7 +77,44 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                     width: 25,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var token =
+                          Provider.of<AuthProvider>(context, listen: false)
+                              .setToken;
+                      bool isit =
+                          Provider.of<TripProvider>(context, listen: false)
+                              .addLocation(l, d);
+                      if (!isit) {
+                        showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('Reset Trip'),
+                                content:
+                                    Text('Another Destination Already Present'),
+                                actions: [
+                                  FlatButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('NO')),
+                                  FlatButton(
+                                      onPressed: () {
+                                        Provider.of<TripProvider>(context,
+                                                listen: false)
+                                            .resetTrip();
+                                        Provider.of<TripProvider>(context,
+                                                listen: false)
+                                            .addLocation(l, d);
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('YES')),
+                                ],
+                              );
+                            });
+                      }
+                    },
                     child: Container(
                         alignment: Alignment.center,
                         height: 45,
@@ -179,7 +220,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                                 child: FittedBox(
                                   fit: BoxFit.contain,
                                   child: Text(
-                                    d,
+                                    d.name,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,

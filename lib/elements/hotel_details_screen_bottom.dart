@@ -95,7 +95,8 @@ class HotelDetailsScreenBottom extends StatelessWidget {
               child: Text(
                 h.description,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 88, 88, 88),
                 ),
                 textAlign: TextAlign.left,
               ),

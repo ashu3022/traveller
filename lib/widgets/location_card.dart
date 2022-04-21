@@ -16,7 +16,7 @@ class LocationCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(LocationDetailsScreen.routeName,
-            arguments: {'location': l, 'destination': d.name});
+            arguments: {'location': l, 'destination': d});
       },
       child: Container(
         decoration: BoxDecoration(

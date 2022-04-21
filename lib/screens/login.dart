@@ -16,6 +16,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +61,15 @@ class _SignInScreenState extends State<SignInScreen> {
                             email: _emailTextController.text,
                             password: _passwordTextController.text)
                         .then((value) {
-                      Navigator.of(context).pushNamed(TabsScreen.routeName);
+                      final user = FirebaseAuth.instance.currentUser;
+                      if (user != null) {
+                        final uid = user.uid as String;
+                        print(uid);
+                        Navigator.of(context)
+                            .pushNamed(TabsScreen.routeName, arguments: uid);
+                      } else {
+                        Navigator.of(context).pushNamed(TabsScreen.routeName);
+                      }
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });

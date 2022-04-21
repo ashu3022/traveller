@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/elements/reusable_widget.dart';
 import 'package:travel_app/screens/TabsScreen.dart';
+import 'package:travel_app/screens/login.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'profile_screen.dart';
 
@@ -79,7 +80,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             password: _passwordTextController.text)
                         .then((value) {
                       print("Created New Account");
-                      Navigator.of(context).pushNamed(TabsScreen.routeName);
+
+                      Navigator.of(context).pushNamed(SignInScreen.routeName);
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });

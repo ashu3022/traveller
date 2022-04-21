@@ -6,8 +6,8 @@ import '../screens/location_details_screen.dart';
 import '../provider/destination.dart';
 
 class PopularInTownCard extends StatelessWidget {
-  final String dName;
-  PopularInTownCard(this.dName);
+  final Destination d;
+  PopularInTownCard(this.d);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class PopularInTownCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(LocationDetailsScreen.routeName,
-            arguments: {'location': l, 'destination': dName});
+            arguments: {'location': l, 'destination': d});
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),

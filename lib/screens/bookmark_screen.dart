@@ -140,9 +140,11 @@ class BookmarkScreen extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.95,
                             child: ListView.separated(
                               itemBuilder: ((context, index) {
+                                Destination dest = Provider.of<DestinationProvider>(context,listen: false)
+                                    .fetchDestinationByName(l[index].dName);
                                 return ChangeNotifierProvider.value(
                                   value: l[index],
-                                  child: PopularInTownCard(l[index].dName),
+                                  child: PopularInTownCard(dest),
                                 );
                               }),
                               separatorBuilder: (ctx, index) => const SizedBox(

@@ -3,8 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:travel_app/screens/flights.dart';
+import 'package:travel_app/models/add_to_trip.dart';
+import 'package:travel_app/provider/add_to_trip_provider.dart';
 
+import './provider/auth_provider.dart';
+import './screens/flights.dart';
+import './screens/trains.dart';
 import './screens/destination_does_not_exist_screen.dart';
 import './screens/hotel_description_screen.dart';
 import './screens/TabsScreen.dart';
@@ -35,10 +39,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //debu
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => HotelProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => TripProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => AuthProvider(),
         ),
         ChangeNotifierProvider(
           create: (ctx) => DestinationProvider(),
@@ -74,6 +85,8 @@ class MyApp extends StatelessWidget {
               DestinationNotFoundErrorScreen(),
           HotelDetailsScreen.routeName: (ctx) => HotelDetailsScreen(),
           Flight.routeName: (context) => Flight(),
+          Train.routeName: (context) => Train(),
+          
         },
       ),
     );

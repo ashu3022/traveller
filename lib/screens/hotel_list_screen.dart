@@ -9,7 +9,7 @@ import '../provider/destination.dart';
 class HotelList extends StatelessWidget {
   static const String routeName = '/hotel-list';
 
-  HotelList();
+  //HotelList();
 
   @override
   Widget build(BuildContext context) {

@@ -11,19 +11,15 @@ class HomeScreenTopBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Column(
-          children: [
-            StackImage(),
-            SizedBox(
-              height: ((MediaQuery.of(context).size.height -
-                          MediaQuery.of(context).padding.top) *
-                      0.15) /
-                  2,
-            ),
-            //HotDestinations(),
-            HomeScreenBottom(),
-          ],
+        StackImage(),
+        SizedBox(
+          height: ((MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.15) /
+              2,
         ),
+        //HotDestinations(),
+        HomeScreenBottom(),
       ],
     );
   }

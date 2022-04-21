@@ -5,22 +5,51 @@ import '../screens/homescreen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/loading_screen.dart';
 import '../screens/constraints.dart';
+import '../models/user.dart';
+import '../models/add_to_trip.dart';
 
 class TabsScreen extends StatefulWidget {
   static const String routeName = '/tabscreen';
   const TabsScreen({Key? key}) : super(key: key);
-
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Widget> _pages = [
+  String UserId = "";
+  // AddToTrip? t;
+  bool _init = true;
+  List<Widget> _pages = [
     Homescreen(),
     LoadingScreen(),
     BookmarkScreen(),
     ProfileScreen(),
   ];
+  didChangeDependencies() {
+    if (_init) {
+      if (ModalRoute.of(context)!.settings.arguments!= null) {
+        UserId = ModalRoute.of(context)!.settings.arguments as String;
+        User(
+          tokenId: UserId,
+          hotelfav: [],
+          destfav: [],
+          locationfav: [],
+          userId: "1"
+        )
+            .addUser(
+              User(
+                tokenId: UserId,
+                hotelfav: [],
+                destfav: [],
+                locationfav: [],
+                userId: "1"
+              ),
+            )
+            .then((value) => _init = false);
+      }
+      _init = false;
+    }
+  }
 
   int _selectedPageIndex = 0;
 

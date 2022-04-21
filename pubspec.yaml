@@ -62,6 +62,9 @@ dependencies:
   http: ^0.13.4
   #ticket
   ticket_material: ^0.3.1
+  #stories
+  flutter_instagram_stories: any
+  flutter_lints: ^1.0.4
 
 dev_dependencies:
   flutter_test:

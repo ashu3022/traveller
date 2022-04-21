@@ -28,7 +28,7 @@ class Body extends StatelessWidget {
               icon: "assets/icons/Discover.svg",
               press: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                    MaterialPageRoute(builder: (context) => PlannedTrip()));
               }),
           ProfileMenu(
             text: "Settings",

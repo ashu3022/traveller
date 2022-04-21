@@ -7,14 +7,15 @@ class HomeScreenBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           HotDestinations(),
-          SizedBox(
-            height: ((MediaQuery.of(context).size.height -
-                    MediaQuery.of(context).padding.top) *
-                0.005),
-          ),
-          HomeScreenStories(),
+          // SizedBox(
+          //   height: ((MediaQuery.of(context).size.height -
+          //           MediaQuery.of(context).padding.top) *
+          //       0.005),
+          // ),
+          HomeScreenReviews(),
         ],
       ),
     );

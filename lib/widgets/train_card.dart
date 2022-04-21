@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_material/ticket_material.dart';
 
-class FlightCard extends StatelessWidget {
+class TrainCard extends StatelessWidget {
   Widget _buildLeft() {
     return Padding(
       padding: const EdgeInsets.all(15.0),
@@ -94,7 +94,7 @@ class FlightCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.airplanemode_active),
+            Icon(Icons.train),
             SizedBox(
               height: 10,
             ),

@@ -254,7 +254,7 @@ class HotelProvider with ChangeNotifier {
   // }
 
   Future<void> fetchRapidHotelsGet1(Destination city_name) async {
-    final apiKey = '47fcf2ca9fmshb8d92a9f8496a7ep137f82jsne8bc2ef7fa9d';
+    final apiKey = '45f1856e26msh8cf9f93170e82f3p1caaedjsn93e53bb94979';
     final baseUrl = 'priceline-com-provider.p.rapidapi.com';
     String destinationId;
     List<dynamic> hotels;

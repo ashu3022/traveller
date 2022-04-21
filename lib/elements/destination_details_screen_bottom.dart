@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/screens/flights.dart';
+import 'package:travel_app/screens/trains.dart';
 
 import '../provider/destination.dart';
 import '../widgets/destination_details_screen_location_card.dart';
@@ -56,7 +57,8 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
               child: Text(
                 dest.description,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 88, 88, 88),
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -122,7 +124,7 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   return ChangeNotifierProvider.value(
                     value: l[index],
-                    child: PopularInTownCard(l[index].dName),
+                    child: PopularInTownCard(dest),
                   );
                 }),
                 separatorBuilder: (ctx, index) => const SizedBox(
@@ -154,28 +156,28 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.98,
-              height: 50,
-              alignment: Alignment.topCenter,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ButtonCard(
-                    imgUrl: 'assets/icons/train-svgrepo-com.svg',
-                    routeName: HotelList.routeName,
-                    d: dest,
-                    name: 'Trains',
-                  ),
-                  ButtonCard(
-                    imgUrl: 'assets/icons/restaurant-svgrepo-com.svg',
-                    routeName: HotelList.routeName,
-                    d: dest,
-                    name: 'Dinning',
-                  ),
-                ],
-              ),
-            )
+            // Container(
+            //   width: MediaQuery.of(context).size.width * 0.98,
+            //   height: 50,
+            //   alignment: Alignment.topCenter,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       ButtonCard(
+            //         imgUrl: 'assets/icons/train-svgrepo-com.svg',
+            //         routeName: Train.routeName,
+            //         d: dest,
+            //         name: 'Trains',
+            //       ),
+            //       ButtonCard(
+            //         imgUrl: 'assets/icons/restaurant-svgrepo-com.svg',
+            //         routeName: HotelList.routeName,
+            //         d: dest,
+            //         name: 'Dinning',
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

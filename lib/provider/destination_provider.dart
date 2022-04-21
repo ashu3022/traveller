@@ -15,7 +15,7 @@ class DestinationProvider with ChangeNotifier {
       description:
           "Bhopal is a city in the central Indian state of Madhya Pradesh. It's one of India’s greenest cities. There are two main lakes, the Upper Lake and the Lower Lake. On the banks of the Upper Lake is Van Vihar National Park, home to tigers, lions and leopards. The State Museum has fossils, paintings and rare Jain sculptures. Taj-ul-Masjid is one of Asia’s largest mosques, with white domes, minarets and a huge courtyard",
       imgUrl:
-          "https://www.tourmyindia.com/blog//wp-content/uploads/2021/10/Best-Places-to-Visit-in-Bhopal-MP-Sanchi-Stupa.jpg",
+          "https://drive.google.com/uc?export=view&id=1bR6w-myimhOsQxClJpCfkKLf2EiPnpt5",
       reviews: [
         "Bhopal is nice city its also called city of lakes. Many places is here to hangout with family and friends like van vihar, upar lake, sair sapata. Also here is famous shopping place named new market where you can get every type of products in fair price.",
         " I love Bhopal , I feels independent in this city . You should visit Bhopal once in a life. There are many beautiful places you can visit like van vihar, lake view, db mall, people's mall, trival musium "
@@ -30,7 +30,7 @@ class DestinationProvider with ChangeNotifier {
       description:
           "Bhopal is a city in the central Indian state of Madhya Pradesh. It's one of India’s greenest cities. There are two main lakes, the Upper Lake and the Lower Lake. On the banks of the Upper Lake is Van Vihar National Park, home to tigers, lions and leopards. The State Museum has fossils, paintings and rare Jain sculptures. Taj-ul-Masjid is one of Asia’s largest mosques, with white domes, minarets and a huge courtyard",
       imgUrl:
-          "https://www.tourmyindia.com/blog//wp-content/uploads/2021/10/Best-Places-to-Visit-in-Bhopal-MP-Sanchi-Stupa.jpg",
+          "https://drive.google.com/uc?export=view&id=1Jv8odJR2TaprN9RpjqlmSu5lDlVOBUQO",
       reviews: [
         "Bhopal is nice city its also called city of lakes. Many places is here to hangout with family and friends like van vihar, upar lake, sair sapata. Also here is famous shopping place named new market where you can get every type of products in fair price.",
         " I love Bhopal , I feels independent in this city . You should visit Bhopal once in a life. There are many beautiful places you can visit like van vihar, lake view, db mall, people's mall, trival musium "
@@ -41,14 +41,14 @@ class DestinationProvider with ChangeNotifier {
       name: "Goa",
       id: DateTime.now().toString(),
       summary:
-          "It is also one of the greenest cities in India. Bhopal is a popular destination among tourists as well as backpackers, and its fame is attributed to the plethora of scenic and interesting spot it houses within its realm.",
+          "AMAZING BEACHES, MAJESTIC CARNIVA, THRILLING WATERSPORTS, SPOTTING DOLPHINS, etc.",
       description:
-          "Bhopal is a city in the central Indian state of Madhya Pradesh. It's one of India’s greenest cities. There are two main lakes, the Upper Lake and the Lower Lake. On the banks of the Upper Lake is Van Vihar National Park, home to tigers, lions and leopards. The State Museum has fossils, paintings and rare Jain sculptures. Taj-ul-Masjid is one of Asia’s largest mosques, with white domes, minarets and a huge courtyard",
+          "Goa is one of the most favorite destination among Indian tourists due to its pristine beaches. Dotted with hundreds of impressive beaches in Goa, the incredible coastline of more than 100 km offers beautiful views and serenity where tourists enjoy and relax in the Sun.",
       imgUrl:
-          "https://www.tourmyindia.com/blog//wp-content/uploads/2021/10/Best-Places-to-Visit-in-Bhopal-MP-Sanchi-Stupa.jpg",
+          "https://drive.google.com/uc?export=view&id=121PweZh8CD4WQiCp4cdMIuTX4Tg_JHe3",
       reviews: [
-        "Bhopal is nice city its also called city of lakes. Many places is here to hangout with family and friends like van vihar, upar lake, sair sapata. Also here is famous shopping place named new market where you can get every type of products in fair price.",
-        " I love Bhopal , I feels independent in this city . You should visit Bhopal once in a life. There are many beautiful places you can visit like van vihar, lake view, db mall, people's mall, trival musium "
+        "Every beach has its specialty, beauty, and serenity where tourists enjoy their best.",
+        "Ideal place for water sports and fun lovers like Jet skiing, Flyboarding, Kayaking, windsurfing, Banana riding, Bumper riding, Speed Boating, Parasailing, etc."
       ],
     ),
 
@@ -57,20 +57,24 @@ class DestinationProvider with ChangeNotifier {
       name: "Andaman \$ Nicobar",
       id: DateTime.now().toString(),
       summary:
-          "It is also one of the greenest cities in India. Bhopal is a popular destination among tourists as well as backpackers, and its fame is attributed to the plethora of scenic and interesting spot it houses within its realm.",
+          "The largest sea turtles in the world nest here and famous for beach holidays to trekking to marine wildlife and sea adventures",
       description:
-          "Bhopal is a city in the central Indian state of Madhya Pradesh. It's one of India’s greenest cities. There are two main lakes, the Upper Lake and the Lower Lake. On the banks of the Upper Lake is Van Vihar National Park, home to tigers, lions and leopards. The State Museum has fossils, paintings and rare Jain sculptures. Taj-ul-Masjid is one of Asia’s largest mosques, with white domes, minarets and a huge courtyard",
+          "Andaman Nicobar Islands is famous for its absolutely stunning beaches, rich biodiversity, beautiful marine ecosystem and tropical evergreen forests teeming with wildlife.",
       imgUrl:
-          "https://www.tourmyindia.com/blog//wp-content/uploads/2021/10/Best-Places-to-Visit-in-Bhopal-MP-Sanchi-Stupa.jpg",
+          "https://drive.google.com/uc?export=view&id=1kzCtJl6oSh8pe9uy8ayncdU3IpFS_AaL",
       reviews: [
-        "Bhopal is nice city its also called city of lakes. Many places is here to hangout with family and friends like van vihar, upar lake, sair sapata. Also here is famous shopping place named new market where you can get every type of products in fair price.",
-        " I love Bhopal , I feels independent in this city . You should visit Bhopal once in a life. There are many beautiful places you can visit like van vihar, lake view, db mall, people's mall, trival musium "
+        "It is the perfect destination for your family vacation or honeymoon or just to travel around. You can see only good things there.",
+        "From Thrillophilia and after coming back from the trip, we could only say that it was just amazing. The overall journey with Thrillophilia was flawless."
       ],
     ),
   ];
 
   List<Destination> get items {
     return [..._items];
+  }
+
+  Destination fetchDestinationByName(String name) {
+    return _items.firstWhere((element) => element.name.toLowerCase() == name.toLowerCase());
   }
 
   List<Destination> get favouriteItems {
