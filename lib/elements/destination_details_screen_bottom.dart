@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/screens/enter_fdetails.dart';
 import 'package:travel_app/screens/flights.dart';
 import 'package:travel_app/screens/trains.dart';
 
@@ -18,7 +19,8 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Location> l =
-        Provider.of<LocationProvider>(context).fetchHotLocations(dest);
+        Provider.of<LocationProvider>(context, listen: false)
+            .fetchHotLocations(dest);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -149,7 +151,7 @@ class DestinationDetailsScreenBottom extends StatelessWidget {
                   ),
                   ButtonCard(
                     imgUrl: 'assets/icons/flight-plane-svgrepo-com.svg',
-                    routeName: Flight.routeName,
+                    routeName: DetailsReqd.routename,
                     d: dest,
                     name: 'Flights',
                   ),

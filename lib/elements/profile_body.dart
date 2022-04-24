@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travel_app/screens/travel_buddy.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 import 'package:travel_app/screens/myAccount.dart';
@@ -39,6 +40,13 @@ class Body extends StatelessWidget {
             text: "Help Center",
             icon: "assets/icons/Question mark.svg",
             press: () {},
+          ),
+          ProfileMenu(
+            text: "Travel Buddy",
+            icon: "assets/icons/travel-svgrepo-com.svg",
+            press: () {
+              Navigator.of(context).pushNamed(TravelBuddy.routeName);
+            },
           ),
         ],
       ),

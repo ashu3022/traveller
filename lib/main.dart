@@ -5,6 +5,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:travel_app/models/add_to_trip.dart';
 import 'package:travel_app/provider/add_to_trip_provider.dart';
+import 'package:travel_app/provider/flight_provider.dart';
+import 'package:travel_app/screens/enter_fdetails.dart';
+import 'package:travel_app/screens/travel_buddy.dart';
 
 import './provider/auth_provider.dart';
 import './screens/flights.dart';
@@ -44,6 +47,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => HotelProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => FlightProvider(),
         ),
         ChangeNotifierProvider(
           create: (ctx) => TripProvider(),
@@ -86,7 +92,8 @@ class MyApp extends StatelessWidget {
           HotelDetailsScreen.routeName: (ctx) => HotelDetailsScreen(),
           Flight.routeName: (context) => Flight(),
           Train.routeName: (context) => Train(),
-          
+          DetailsReqd.routename: (ctx) => DetailsReqd(),
+          TravelBuddy.routeName: (ctx)=> TravelBuddy(),
         },
       ),
     );

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 class Airplane {
   final String sourceName;
-  final DateTime dateDeparture;
+  final String dateDeparture;
   final String destinationName;
   final double price;
   final String classType = "ECO";
   final String way = "ONE_WAY";
-  final DateTime departureTime;
-  final DateTime arrivalTime;
-  final DateTime duration;
+  final String departureTime;
+  final String arrivalTime;
+  final int duration;
+  final String airline;
 
   Airplane({
     required this.sourceName,
@@ -19,5 +20,6 @@ class Airplane {
     required this.duration,
     required this.destinationName,
     required this.departureTime,
+    required this.airline
   });
 }

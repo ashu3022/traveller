@@ -1,11 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_material/ticket_material.dart';
+import 'package:travel_app/models/airplane.dart';
 
 class FlightCard extends StatelessWidget {
+  Map<String, String> brandlogos = {
+    "AI":
+        "https://seekvectorlogo.com/wp-content/uploads/2017/12/air-india-vector-logo.png",
+    "G8":
+        "https://www.ftd.travel/book/admin/public/airlines/airline_logo/go-first-go-air-logo.jpg",
+    "W2":
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScJJ-xWbPuv2OTMzEsmR4O82VyGyx98WMv8bNUooN3c2x74iHidtPOkWYD7-5SGiH9b90&usqp=CAU",
+    "SG":
+        "http://4.bp.blogspot.com/-6YOY3SMN7kI/TwPF5jQYJqI/AAAAAAAAEAs/fR3TcoJHvzk/s1600/spicejet_logo.png",
+    "HR":
+        "https://travelandtourworld.com/wp-content/uploads/2013/05/hahn-air-logo.jpg",
+    "H1":
+        "https://i.pinimg.com/736x/c7/75/04/c77504ca3af4642b44a917d1144eb42e.jpg",
+    "UK": "https://www.ghe.co.in/img/Partners/Vistara-Logo.png"
+  };
+  final Airplane a;
+  FlightCard(this.a);
   Widget _buildLeft() {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            //fit: BoxFit.contain,
+            //fit: BoxFit.values,
+            //scale: 0.5,
+            opacity: 0.8,
+            image: NetworkImage(brandlogos[a.airline] as String),
+          ),
+        ),
         child: Column(
           children: [
             Row(
@@ -25,7 +52,7 @@ class FlightCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Source_city",
+                  a.sourceName,
                   style: TextStyle(
                     fontSize: 19,
                     //color: Colors.blue,
@@ -33,7 +60,7 @@ class FlightCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Dest_city",
+                  a.destinationName,
                   style: TextStyle(
                     fontSize: 19,
                     color: Colors.blue,
@@ -48,8 +75,14 @@ class FlightCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("DEPT_TIME"),
-                Text("ARRIVAL TIME"),
+                Text(
+                  a.departureTime.substring(11, 16),
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  a.arrivalTime.substring(11, 16),
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             SizedBox(
@@ -72,7 +105,10 @@ class FlightCard extends StatelessWidget {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("duration"),
+                      Text(
+                        '${a.duration} m',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       // Container(
                       //   width: 40,
                       //   height: 10,
@@ -98,7 +134,10 @@ class FlightCard extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Text("Price"),
+            Text(
+              '₹${a.price.toStringAsFixed(0)}',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
